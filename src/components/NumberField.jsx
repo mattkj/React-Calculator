@@ -10,7 +10,7 @@ var NumberField = React.createClass({
   render: function(){
     return (
       <div className="form-group">
-        <input className="form-control" placeholder="Enter a number" value={this.state.value} onChange={this.handleChange} />
+        <input type="number" className="form-control" placeholder="Enter a number" value={this.state.value} onChange={this.handleChange} />
       </div>
     );
   }

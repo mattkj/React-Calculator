@@ -13,23 +13,26 @@ var Calculator = React.createClass({
     var operator = e.target.value;
     var num1Value = parseInt(this.refs.num1.state.value);
     var num2Value = parseInt(this.refs.num2.state.value);
+    
+    if (!isNaN(num1Value) && !isNaN(num2Value)){
+      switch (operator){
+        case "+":
+          newTotal = num1Value + num2Value;
+          break;
+        case "-":
+          newTotal = num1Value - num2Value;
+          break;
+        case "/":
+          newTotal = num1Value / num2Value;
+          break;
+        case "*":
+          newTotal = num1Value * num2Value;
+          break;
+      };
 
-    switch (operator){
-      case "+":
-        newTotal = num1Value + num2Value;
-        break;
-      case "-":
-        newTotal = num1Value - num2Value;
-        break;
-      case "/":
-        newTotal = num1Value / num2Value;
-        break;
-      case "*":
-        newTotal = num1Value * num2Value;
-        break;
-    }
+      this.refs.total.setState({value: newTotal});
+  }
 
-    this.refs.total.setState({value: newTotal});
   },
   render: function(){
     return (
