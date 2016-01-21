@@ -39,13 +39,23 @@ var Calculator = React.createClass({
           <div className="col-sm-10">
             <TotalField ref="total" />
           </div>
-          <div className="col-sm-2"><button className="btn btn-danger btn-block" onClick={this.clearAll}>Clear</button></div>
+          <div className="col-sm-2">
+            <button className="btn btn-danger btn-block" onClick={this.clearAll}>Clear</button>
+          </div>
         </div>
         <div className="row">
-          <div className="col-sm-3"><button className="btn btn-primary btn-block" onClick={this.add}>+ Add</button></div>
-          <div className="col-sm-3"><button className="btn btn-primary btn-block" onClick={this.subtract}>- Subtract</button></div>
-          <div className="col-sm-3"><button className="btn btn-primary btn-block" onClick={this.divide}>\ Divide</button></div>
-          <div className="col-sm-3"><button className="btn btn-primary btn-block" onClick={this.multiply}>* Multiply</button></div>
+          <div className="col-sm-3">
+            <button className="btn btn-primary btn-block" onClick={this.add}>+ Add</button>
+          </div>
+          <div className="col-sm-3">
+            <button className="btn btn-primary btn-block" onClick={this.subtract}>- Subtract</button>
+          </div>
+          <div className="col-sm-3">
+            <button className="btn btn-primary btn-block" onClick={this.divide}>\ Divide</button>
+          </div>
+          <div className="col-sm-3">
+            <button className="btn btn-primary btn-block" onClick={this.multiply}>* Multiply</button>
+          </div>
         </div>
       </div>
     );
