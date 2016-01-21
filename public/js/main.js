@@ -19123,7 +19123,7 @@ var Calculator = React.createClass({
           React.createElement(
             'button',
             { className: 'btn btn-primary btn-block', onClick: this.operation, value: '/' },
-            ' Divide'
+            '/ Divide'
           )
         ),
         React.createElement(
