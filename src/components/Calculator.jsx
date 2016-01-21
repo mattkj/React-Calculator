@@ -8,20 +8,27 @@ var Calculator = React.createClass({
     this.refs.num2.setState({value: ""});
     this.refs.total.setState({value: ""});
   },
-  add: function(){
-    var newTotal = (parseInt(this.refs.num1.state.value) + parseInt(this.refs.num2.state.value));
-    this.refs.total.setState({value: newTotal});
-  },
-  subtract: function(){
-    var newTotal = (parseInt(this.refs.num1.state.value) - parseInt(this.refs.num2.state.value));
-    this.refs.total.setState({value: newTotal});
-  },
-  divide: function(){
-    var newTotal = (parseInt(this.refs.num1.state.value) / parseInt(this.refs.num2.state.value));
-    this.refs.total.setState({value: newTotal});
-  },
-  multiply: function(){
-    var newTotal = (parseInt(this.refs.num1.state.value) * parseInt(this.refs.num2.state.value));
+  operation: function(e){
+    var newTotal;
+    var operator = e.target.value;
+    var num1Value = parseInt(this.refs.num1.state.value);
+    var num2Value = parseInt(this.refs.num2.state.value);
+
+    switch (operator){
+      case "+":
+        newTotal = num1Value + num2Value;
+        break;
+      case "-":
+        newTotal = num1Value - num2Value;
+        break;
+      case "/":
+        newTotal = num1Value / num2Value;
+        break;
+      case "*":
+        newTotal = num1Value * num2Value;
+        break;
+    }
+
     this.refs.total.setState({value: newTotal});
   },
   render: function(){
@@ -45,16 +52,16 @@ var Calculator = React.createClass({
         </div>
         <div className="row">
           <div className="col-sm-3">
-            <button className="btn btn-primary btn-block" onClick={this.add}>+ Add</button>
+            <button className="btn btn-primary btn-block" onClick={this.operation} value="+">+ Add</button>
           </div>
           <div className="col-sm-3">
-            <button className="btn btn-primary btn-block" onClick={this.subtract}>- Subtract</button>
+            <button className="btn btn-primary btn-block" onClick={this.operation} value="-">- Subtract</button>
           </div>
           <div className="col-sm-3">
-            <button className="btn btn-primary btn-block" onClick={this.divide}>\ Divide</button>
+            <button className="btn btn-primary btn-block" onClick={this.operation} value="/"> Divide</button>
           </div>
           <div className="col-sm-3">
-            <button className="btn btn-primary btn-block" onClick={this.multiply}>* Multiply</button>
+            <button className="btn btn-primary btn-block" onClick={this.operation} value="*">* Multiply</button>
           </div>
         </div>
       </div>

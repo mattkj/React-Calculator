@@ -19037,20 +19037,27 @@ var Calculator = React.createClass({
     this.refs.num2.setState({ value: "" });
     this.refs.total.setState({ value: "" });
   },
-  add: function () {
-    var newTotal = parseInt(this.refs.num1.state.value) + parseInt(this.refs.num2.state.value);
-    this.refs.total.setState({ value: newTotal });
-  },
-  subtract: function () {
-    var newTotal = parseInt(this.refs.num1.state.value) - parseInt(this.refs.num2.state.value);
-    this.refs.total.setState({ value: newTotal });
-  },
-  divide: function () {
-    var newTotal = parseInt(this.refs.num1.state.value) / parseInt(this.refs.num2.state.value);
-    this.refs.total.setState({ value: newTotal });
-  },
-  multiply: function () {
-    var newTotal = parseInt(this.refs.num1.state.value) * parseInt(this.refs.num2.state.value);
+  operation: function (e) {
+    var newTotal;
+    var operator = e.target.value;
+    var num1Value = parseInt(this.refs.num1.state.value);
+    var num2Value = parseInt(this.refs.num2.state.value);
+
+    switch (operator) {
+      case "+":
+        newTotal = num1Value + num2Value;
+        break;
+      case "-":
+        newTotal = num1Value - num2Value;
+        break;
+      case "/":
+        newTotal = num1Value / num2Value;
+        break;
+      case "*":
+        newTotal = num1Value * num2Value;
+        break;
+    }
+
     this.refs.total.setState({ value: newTotal });
   },
   render: function () {
@@ -19097,7 +19104,7 @@ var Calculator = React.createClass({
           { className: 'col-sm-3' },
           React.createElement(
             'button',
-            { className: 'btn btn-primary btn-block', onClick: this.add },
+            { className: 'btn btn-primary btn-block', onClick: this.operation, value: '+' },
             '+ Add'
           )
         ),
@@ -19106,7 +19113,7 @@ var Calculator = React.createClass({
           { className: 'col-sm-3' },
           React.createElement(
             'button',
-            { className: 'btn btn-primary btn-block', onClick: this.subtract },
+            { className: 'btn btn-primary btn-block', onClick: this.operation, value: '-' },
             '- Subtract'
           )
         ),
@@ -19115,8 +19122,8 @@ var Calculator = React.createClass({
           { className: 'col-sm-3' },
           React.createElement(
             'button',
-            { className: 'btn btn-primary btn-block', onClick: this.divide },
-            '\\ Divide'
+            { className: 'btn btn-primary btn-block', onClick: this.operation, value: '/' },
+            ' Divide'
           )
         ),
         React.createElement(
@@ -19124,7 +19131,7 @@ var Calculator = React.createClass({
           { className: 'col-sm-3' },
           React.createElement(
             'button',
-            { className: 'btn btn-primary btn-block', onClick: this.multiply },
+            { className: 'btn btn-primary btn-block', onClick: this.operation, value: '*' },
             '* Multiply'
           )
         )
