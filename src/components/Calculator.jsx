@@ -58,7 +58,7 @@ var Calculator = React.createClass({
             <button className="btn btn-primary btn-block" onClick={this.operation} value="-">- Subtract</button>
           </div>
           <div className="col-sm-3">
-            <button className="btn btn-primary btn-block" onClick={this.operation} value="/"> Divide</button>
+            <button className="btn btn-primary btn-block" onClick={this.operation} value="/">/ Divide</button>
           </div>
           <div className="col-sm-3">
             <button className="btn btn-primary btn-block" onClick={this.operation} value="*">* Multiply</button>
